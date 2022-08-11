@@ -52,6 +52,6 @@ python SARfish.py VH_test_image.tif detections.geojson
 
 ## Known Issues
 
-Currently the model's detection threshold is set quite low. This can result in false positives where objects like stationary oil platforms, rocks or small islands can be detected as ships. 
+Currently the model's detection threshold is set quite low. This can result in false positives where objects like stationary oil platforms, rocks, or small islands can be detected as ships. 
 
-Areas on the edge of the input raster may not be properly scanned, due to image not being perfectly divisible by the 800x800 detection window. 
+Areas on the edge of the input raster may not be properly scanned, due to the image not being perfectly divisible by the 800x800 detection window. 
