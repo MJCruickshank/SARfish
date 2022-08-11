@@ -38,7 +38,7 @@ conda activate SARfish
 1) Download a Sentinel 1 SAR VH polarisation image from Copernicus Open Access Hub (https://scihub.copernicus.eu/) or SentinelHub EO Browser (https://apps.sentinel-hub.com/eo-browser/)
 2) Convert raw .tiff image to .tif (Can be performed in QGIS)
 3) Clone this repository
-4) Download weights here (https://drive.google.com/file/d/1f4hJH9YBeTlNkbWUrbCP-C8ELh0eWJtT/view) and save the model.bin file in in the SARfish directory.
+4) Download model weights here (https://drive.google.com/file/d/1f4hJH9YBeTlNkbWUrbCP-C8ELh0eWJtT/view) and save the model.bin file to the SARfish directory.
 5) Change working directory to that of this repository
 6) Run: 
 ```shell
