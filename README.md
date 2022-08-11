@@ -37,13 +37,15 @@ conda activate SARfish
 
 1) Download a Sentinel 1 SAR VH polarisation image from Copernicus Open Access Hub (https://scihub.copernicus.eu/) or SentinelHub EO Browser (https://apps.sentinel-hub.com/eo-browser/)
 2) Convert raw .tiff image to .tif (Can be performed in QGIS)
-3) Run: 
+3) Clone this repository
+4) Change working directory to that of this repository
+5) Run: 
 ```shell
-python SARfish.py input_tif_image_path image_shard_directory output_geojson_filepath
+python SARfish.py input_tif_image_name output_geojson_filename
 ```
    Example: 
 ```shell
-python SARfish.py /Users/Sar_Ship_Detection/test_imagery/VH_test_image.tif /UsersSar_Ship_Detection/test_imagery/shards/ /Users/Sar_Ship_Detection/test_imagery/detections.geojson
+python SARfish.py VH_test_image.tif detections.geojson
 ```
 4) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land.
 
@@ -52,5 +54,3 @@ python SARfish.py /Users/Sar_Ship_Detection/test_imagery/VH_test_image.tif /User
 Currently the model's detection threshold is set quite low. This can result in false positives where objects like stationary oil platforms, rocks or small islands can be detected as ships. 
 
 Areas on the edge of the input raster may not be properly scanned, due to image not being perfectly divisible by the 800x800 detection window. 
-
-## Future Development
