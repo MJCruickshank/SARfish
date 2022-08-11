@@ -3,7 +3,7 @@ Ship detection in Sentinel 1 Synthetic Aperture Radar (SAR) imagery
 
 !["SARfish"](https://github.com/MJCruickshank/SARfish/blob/main/title_image.jpg)
 
-**Note: This program is very much a work in progress, and its outputs should not be relied upon for important tasks.**
+*Note: This program is very much a work in progress, and its outputs should not be relied upon for important tasks.*
 
 SARfish is a program designed to help Open Source Intelligence (OSINT) researchers investigate maritime traffic. While the automatic identification system (AIS) tracks most commercial vessels, a small percentage of vessels sail with their AIS transponders off. These vessels are often military vessels, or shipments of illicit/clandestine cargoes, making them of particular interest to researchers. 
 
