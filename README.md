@@ -1,7 +1,7 @@
 # SARfish
 Ship detection in Sentinel 1 Synthetic Aperture Radar (SAR) imagery
 
-
+!["SARfish"]([http://url/to/img.png](https://github.com/MJCruickshank/SARfish/blob/main/title_image.jpg))
 
 **Note: This program is very much a work in progress, and its outputs should not be relied upon for important tasks.**
 
