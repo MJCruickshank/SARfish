@@ -48,7 +48,7 @@ python SARfish.py input_tif_image_name output_geojson_filename prediction_confid
 ```shell
 python SARfish.py VH_test_image.tif detections.geojson 0.5
 ```
-7) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land.
+7) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land. Alternatively, use the "detection_confidence" field to visualise the model's confidence that a given detection is a ship. 
 
 ## Known Issues
 
