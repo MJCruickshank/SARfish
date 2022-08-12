@@ -18,7 +18,8 @@ Specifically, SARfish breaks down the input SAR geotiff file into 800x800 shards
 ### Requirements
 
 - **Python 3.9** 
-- **conda**: The installation script that installs the dependencies needs to use both conda and pip to fetch the required dependencies, so please use conda and create a new conda virtual environment.
+- **conda**: The installation script that installs the dependencies needs to use both conda and pip to fetch the required 
+dependencies, so please use conda and create a new conda virtual environment.
 
 ### Installing Package Dependencies
 
@@ -35,7 +36,7 @@ conda activate SARfish
 ```
 ## To Run
 
-1) Download a Sentinel 1 SAR VH polarisation image from Copernicus Open Access Hub (https://scihub.copernicus.eu/) or SentinelHub EO Browser (https://apps.sentinel-hub.com/eo-browser/)
+1) Download a Sentinel 1 SAR VH polarisation image, for more details check the [Data Specifics](#data-specifics) section below
 2) Convert raw .tiff image to .tif (Can be performed in QGIS)
 3) Clone this repository
 4) Download model weights here (https://drive.google.com/file/d/1f4hJH9YBeTlNkbWUrbCP-C8ELh0eWJtT/view) and save the model.bin file to the SARfish directory.
@@ -49,6 +50,12 @@ python SARfish.py input_tif_image_name output_geojson_filename
 python SARfish.py VH_test_image.tif detections.geojson
 ```
 7) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land.
+
+### Data Specifics
+You can download Sentinel 1 products from [Copernicus Open Access Hub](https://scihub.copernicus.eu/) or 
+[SentinelHub EO Browser](https://apps.sentinel-hub.com/eo-browser/). The pipeline currently expects the Sentinel tile 
+to be in EPSG:4326, so either you download the tile in that coordinate system or you need to reproject it. 
+The datatype of the tile should be an `8-bit` integer.
 
 ## Known Issues
 
