@@ -20,7 +20,7 @@ import rasterio
 
 import pickle
 import sys
-import gdal
+import osgeo.gdal as gdal
 import geopandas as gpd
 from osgeo import osr
 from shapely.geometry import Point
