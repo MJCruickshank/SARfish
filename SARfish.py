@@ -353,7 +353,7 @@ tiff_filepath = rootdir+"/"+tiff_filename
 output_geojson_filepath = rootdir+"/" + output_geojson_filename
 
 
-os.mkdir(shard_dir)
+os.makedirs(shard_dir, exist_ok=True)
 
 num_classes = 2
 model_ft = get_instance_segmentation_model(num_classes)
