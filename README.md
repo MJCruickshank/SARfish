@@ -25,7 +25,7 @@ Specifically, SARfish breaks down the input SAR geotiff file into 800x800 shards
 1. Create the conda environment. This will install all necessary package dependencies too.
 
 ```shell
-conda create -n sarfish python gdal numpy pandas shapely matplotlib pytorch torchvision rasterio ipython tqdm geopandas
+conda create -n sarfish -c conda-forge python gdal numpy pandas shapely matplotlib pytorch torchvision rasterio ipython tqdm geopandas
 ```
 
 2. Activate the conda environment created.
