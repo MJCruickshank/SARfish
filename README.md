@@ -17,16 +17,15 @@ Specifically, SARfish breaks down the input SAR geotiff file into 800x800 shards
 
 ### Requirements
 
-- **Python 3.9** 
-- **conda**: The installation script that installs the dependencies needs to use both conda and pip to fetch the required 
-dependencies, so please use conda and create a new conda virtual environment.
+- **Python 3.9**+
+- **conda**: Due to the geo-spatial libraries required it is easiest to install the dependencies with conda
 
 ### Installing Package Dependencies
 
 1. Create the conda environment. This will install all necessary package dependencies too.
 
 ```shell
-conda env create -f environment.yml
+conda create -n sarfish -c conda-forge python gdal numpy pandas shapely matplotlib pytorch torchvision rasterio ipython tqdm geopandas
 ```
 
 2. Activate the conda environment created.
@@ -43,13 +42,13 @@ conda activate SARfish
 5) Change working directory to that of this repository
 6) Run: 
 ```shell
-python SARfish.py input_tif_image_name output_geojson_filename
+python SARfish.py input_tif_image_name output_geojson_filename prediction_confidence_threshold 
 ```
    Example: 
 ```shell
-python SARfish.py VH_test_image.tif detections.geojson
+python SARfish.py VH_test_image.tif detections.geojson 0.5
 ```
-7) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land.
+7) Plot detections / imagery in GIS software. Use the "onshore_detection" field in the output geojson file to filter out erronous detections on land. Alternatively, use the "detection_confidence" field to visualise the model's confidence that a given detection is a ship. 
 
 ### Data Specifics
 You can download Sentinel 1 products from [Copernicus Open Access Hub](https://scihub.copernicus.eu/) or 
