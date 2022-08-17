@@ -1,42 +1,29 @@
-import numpy 
-import pandas as pd 
-import random
+import numpy
+import pandas as pd
 from PIL import Image
-from matplotlib import pyplot as plt
-import xml.etree.ElementTree as ET
 
-import torch 
+import torch
 import torchvision
-from torchvision import transforms, datasets
+from torchvision import transforms
 
 import os
 import shutil
 import numpy as np
-import matplotlib.pyplot as plt
-from torchvision.utils import draw_bounding_boxes
-from torchvision.io import read_image
 
-import torchvision.transforms.functional as F
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from shapely import geometry
-from rasterio.mask import mask 
+from rasterio.mask import mask
 import glob
 from tqdm import tqdm
 import rasterio
-import folium
 
 
 import pickle
 import sys
-import gdal
+import osgeo.gdal as gdal
 import geopandas as gpd
-import matplotlib
-import matplotlib.pyplot as plt
-from numba import jit
 from osgeo import osr
-import PIL
-from PIL import Image, TiffImagePlugin
-from shapely.geometry import Point, Polygon, box
+from shapely.geometry import Point
 from geopandas import GeoDataFrame
 
 
@@ -56,12 +43,12 @@ def prepare_image(image_path):
   im.save(jpg_path)
   img = Image.open(jpg_path).convert("RGB")
   img_transforms = transforms.Compose([
-                                      transforms.Resize((800,800)), 
+                                      transforms.Resize((800,800)),
                                       transforms.ToTensor(),
                                       transforms.Normalize(mean=0.5, std=0.2)
                                       ])
   img = img_transforms(img)
-  return img 
+  return img
 
 # def get_new_image_detections(image_path, threashold):
 #   img = prepare_image(image_path)
@@ -209,28 +196,28 @@ def pixel2coord(img_path, x, y):
     new_cs.ImportFromWkt(wgs84_wkt)
 
     # create a transform object to convert between coordinate systems
-    transform = osr.CoordinateTransformation(old_cs,new_cs) 
-    
+    transform = osr.CoordinateTransformation(old_cs,new_cs)
+
     gt = ds.GetGeoTransform()
 
-    # GDAL affine transform parameters, According to gdal documentation xoff/yoff are image left corner, a/e are pixel wight/height and b/d is rotation and is zero if image is north up. 
+    # GDAL affine transform parameters, According to gdal documentation xoff/yoff are image left corner, a/e are pixel wight/height and b/d is rotation and is zero if image is north up.
     xoff, a, b, yoff, d, e = gt
 
     xp = a * x + b * y + xoff
     yp = d * x + e * y + yoff
 
-    lat_lon = transform.TransformPoint(xp, yp) 
+    lat_lon = transform.TransformPoint(xp, yp)
 
     xp = lat_lon[0]
     yp = lat_lon[1]
-    
+
     return (xp, yp)
 
 
 def find_img_coordinates(img_array, image_filename):
     img_coordinates = np.zeros((img_array.shape[0], img_array.shape[1], 2)).tolist()
     for row in range(0, img_array.shape[0]):
-        for col in range(0, img_array.shape[1]): 
+        for col in range(0, img_array.shape[1]):
             img_coordinates[row][col] = Point(pixel2coord(img_path=image_filename, x=col, y=row))
     return img_coordinates
 
@@ -366,7 +353,7 @@ tiff_filepath = rootdir+"/"+tiff_filename
 output_geojson_filepath = rootdir+"/" + output_geojson_filename
 
 
-os.mkdir(shard_dir)
+os.makedirs(shard_dir, exist_ok=True)
 
 num_classes = 2
 model_ft = get_instance_segmentation_model(num_classes)
@@ -375,6 +362,3 @@ model_ft.eval()
 
 get_geojson_detections(tiff_filepath, shard_dir, output_geojson_filepath)
 shutil.rmtree(shard_dir)
-
-
-

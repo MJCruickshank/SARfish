@@ -17,15 +17,15 @@ Specifically, SARfish breaks down the input SAR geotiff file into 800x800 shards
 
 ### Requirements
 
-- **Python 3.9** 
-- **conda**: The installation script that installs the dependencies needs to use both conda and pip to fetch the required dependencies, so please use conda and create a new conda virtual environment.
+- **Python 3.9**+
+- **conda**: Due to the geo-spatial libraries required it is easiest to install the dependencies with conda
 
 ### Installing Package Dependencies
 
 1. Create the conda environment. This will install all necessary package dependencies too.
 
 ```shell
-conda env create -f environment.yml
+conda create -n sarfish -c conda-forge python gdal numpy pandas shapely matplotlib pytorch torchvision rasterio ipython tqdm geopandas
 ```
 
 2. Activate the conda environment created.
